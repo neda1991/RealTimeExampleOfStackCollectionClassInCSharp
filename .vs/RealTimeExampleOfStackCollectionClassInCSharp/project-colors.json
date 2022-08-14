@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "04532ea2-7251-4c94-9d39-18300e51c5cd": {
+      "ProjectGuid": "04532ea2-7251-4c94-9d39-18300e51c5cd",
+      "DisplayName": "RealTimeExampleOfStackCollectionClassInCSharp",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

@@ -1,0 +1,13 @@
+{
+  "version": "1.0.0",
+  "name": "asp.net",
+  "private": true,
+  "devDependencies": {},
+  "dependencies": {
+    "bootstrap": "5.1.2",
+    "@ghalamborm/bootstrap4-rtl": "^1.6.0",
+    "popper.js": "^1.15.0",
+    "components-font-awesome": "^5.9.0",
+    "jquery": "^3.4.1"
+  }
+}

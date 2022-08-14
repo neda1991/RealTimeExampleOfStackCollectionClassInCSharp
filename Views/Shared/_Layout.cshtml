@@ -1,0 +1,91 @@
+﻿@using System.Text.Json
+@{
+    Stack<string>? stackUrls = TempData["stackUrls"] as Stack<string>;
+    Dictionary<string, string> stackUrlsDictioanry = new System.Collections.Generic.Dictionary<string, string>();
+    var counter = stackUrls.Count;
+    for (int i = 1; i <= counter; i++)
+    {
+        stackUrlsDictioanry.Add(i.ToString(), stackUrls.Pop());
+    }
+
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - RealTimeExampleOfStackCollectionClassInCSharp</title>
+    <link rel="stylesheet" href="~/css/my-site.min.css"  />
+    <script src="~/js/my-site.min.js"></script>
+</head>
+<body>
+      @if (TempData["ThereIsNoPreviousLink"] != null)
+        {
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    This is modal body
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <script type="text/javascript">
+                $(function(){
+                   $('#exampleModal').modal("show"); 
+                });
+            </script>
+  }
+    <div>                 
+
+      
+      
+        <table id="tblParent">
+            <tr>
+                <td>
+                    <table id="tblChild1" style="border:solid">
+                        <tr style="font-size:large;font-weight:bold;"><td>Links</td></tr>
+                        <tr><td><a asp-action="Index" asp-all-route-data="stackUrlsDictioanry">Page Index</a></td></tr>
+                        <tr><td><a asp-action="Index1" asp-all-route-data="stackUrlsDictioanry">Page Index1</a></td></tr>
+                        <tr><td><a asp-action="Index2" asp-all-route-data="stackUrlsDictioanry">Page Index2</a></td></tr>
+                        <tr><td><a asp-action="Index3" asp-all-route-data="stackUrlsDictioanry">Page Index3</a></td></tr>
+                    </table>
+                </td>
+                <td style="width:50px;"></td>
+                <td>
+                    <table id="tblChild2">
+                        <tr>
+                            <td>
+                                <form>
+
+                                    @foreach (var url in stackUrlsDictioanry)
+                                    {
+                                        <input type="hidden" value="@url.Value" name="urls" />
+                                    }
+                                    <button type="submit"
+                                            class="btn btn-dark"
+                                            style="border-radius:5px;"
+                                            asp-action="BackToPreviousPage">
+                                        Back
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        <tr><td colspan="3" rowspan="4">@RenderBody()</td> </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
